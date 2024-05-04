@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.practicum.dto.category.CategoryDto;
 import ru.practicum.mapper.CategoryMapper;
 import ru.practicum.service.CategoryService;
-import ru.practicum.utils.PaginationCustom;
+import ru.practicum.utils.PaginationUtils;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class PublicCategoryController {
     public List<CategoryDto> getAll(@RequestParam(defaultValue = "0") Integer from,
                                     @RequestParam(defaultValue = "10") Integer size) {
         log.info("Get all category from {} size {}", from, size);
-        List<CategoryDto> result = categoryMapper.toCategoryDto(categoryService.getAll(PaginationCustom.getPageable(from, size)));
+        List<CategoryDto> result = categoryMapper.toCategoryDto(categoryService.getAll(PaginationUtils.getPageable(from, size)));
         log.info("Get all success size {}", result.size());
         return result;
     }

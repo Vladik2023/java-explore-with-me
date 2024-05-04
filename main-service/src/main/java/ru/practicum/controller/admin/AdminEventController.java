@@ -11,7 +11,7 @@ import ru.practicum.dto.event.EventUpdateAdminDto;
 import ru.practicum.mapper.EventMapper;
 import ru.practicum.mapper.UpdateEventMapper;
 import ru.practicum.service.EventService;
-import ru.practicum.utils.PaginationCustom;
+import ru.practicum.utils.PaginationUtils;
 import ru.practicum.utils.enums.StateEvent;
 
 import javax.validation.Valid;
@@ -52,7 +52,7 @@ public class AdminEventController {
         log.info("Admin get event by filter: users {}, states {}, categories {},  rangeStart {}, rangeEnd {}, from {}, size {}",
                 users, states, categories, rangeStart, rangeEnd, from, size);
         List<EventFullDto> result = eventMapper.toEventStatFullDto(eventService.searchAdmin(users, states, categories,
-                rangeStart, rangeEnd, PaginationCustom.getPageable(from, size)));
+                rangeStart, rangeEnd, PaginationUtils.getPageable(from, size)));
         log.info("Admin get event by filter success {}", result.size());
         return result;
     }

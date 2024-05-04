@@ -13,7 +13,7 @@ import ru.practicum.mapper.RequestMapper;
 import ru.practicum.mapper.UpdateEventMapper;
 import ru.practicum.service.EventService;
 import ru.practicum.service.RequestService;
-import ru.practicum.utils.PaginationCustom;
+import ru.practicum.utils.PaginationUtils;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -48,7 +48,7 @@ public class PrivateEventController {
                                              @RequestParam(defaultValue = "0") int from,
                                              @RequestParam(defaultValue = "10") int size) {
         log.info("User {} get events with parameters: from {}, size {}", userId, from, size);
-        List<EventShortDto> result = eventMapper.toEventShorDto(eventService.getUserEvents(userId, PaginationCustom.getPageable(from, size)));
+        List<EventShortDto> result = eventMapper.toEventShorDto(eventService.getUserEvents(userId, PaginationUtils.getPageable(from, size)));
         log.info("User get event size {} success", result.size());
         return result;
     }

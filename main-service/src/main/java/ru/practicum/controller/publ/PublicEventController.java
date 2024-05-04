@@ -11,7 +11,7 @@ import ru.practicum.dto.event.EventFullDto;
 import ru.practicum.dto.event.EventShortDto;
 import ru.practicum.mapper.EventMapper;
 import ru.practicum.service.EventService;
-import ru.practicum.utils.PaginationCustom;
+import ru.practicum.utils.PaginationUtils;
 import ru.practicum.utils.enums.SortEvent;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,7 +53,7 @@ public class PublicEventController {
         log.info("Get event by filter: text {}, categories {}, paid {}, rangeStart {}, rangeEnd {}, onlyAvailable {}," +
                 "sort {}, from {}, size {}", text, categories, paid, rangeStart, rangeEnd, onlyAvailable, sort, from, size);
         List<EventShortDto> result = eventMapper.toEventStatShortDto(eventService.search(httpServletRequest, text, categories,
-                paid, rangeStart, rangeEnd, onlyAvailable, sort, PaginationCustom.getPageable(from, size)));
+                paid, rangeStart, rangeEnd, onlyAvailable, sort, PaginationUtils.getPageable(from, size)));
         log.info("Get event success size {}", result.size());
         return result;
     }

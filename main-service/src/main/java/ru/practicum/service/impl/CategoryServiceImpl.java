@@ -32,7 +32,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional
     public void deleteById(Long catId) {
-        //TODO: проверка на отсутствие событий
+
         checkExistsCategoryById(catId);
 
         if (eventRepository.existsByCategory_Id(catId)) {

@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.dto.compilation.CompilationDto;
 import ru.practicum.service.CompilationService;
-import ru.practicum.utils.PaginationCustom;
+import ru.practicum.utils.PaginationUtils;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class PublicCompilationController {
                                        @RequestParam(defaultValue = "0") int from,
                                        @RequestParam(defaultValue = "10") int size) {
         log.info("Get compilation filter: pinned {}, from {}, size {}", pinned, from, size);
-        List<CompilationDto> result = compilationService.getAll(pinned, PaginationCustom.getPageable(from, size));
+        List<CompilationDto> result = compilationService.getAll(pinned, PaginationUtils.getPageable(from, size));
         log.info("Get compilation filter success");
         return result;
     }

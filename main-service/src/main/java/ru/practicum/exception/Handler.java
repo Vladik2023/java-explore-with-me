@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 @Slf4j
 @RestControllerAdvice
-public class ErrorHandle {
+public class Handler {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.CONFLICT)

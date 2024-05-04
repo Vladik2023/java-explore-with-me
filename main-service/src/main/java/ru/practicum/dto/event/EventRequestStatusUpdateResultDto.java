@@ -13,8 +13,8 @@ import java.util.List;
 public class EventRequestStatusUpdateResultDto {
 
     @Schema(description = "Подтвержднные заявки")
-    List<RequestDto> confirmedRequests;
+    private List<RequestDto> confirmedRequests;
 
     @Schema(description = "Отклоненные заявки")
-    List<RequestDto> rejectedRequests;
+    private List<RequestDto> rejectedRequests;
 }

@@ -10,7 +10,7 @@ import ru.practicum.dto.user.UserCreateDto;
 import ru.practicum.dto.user.UserDto;
 import ru.practicum.mapper.UserMapper;
 import ru.practicum.service.UserService;
-import ru.practicum.utils.PaginationCustom;
+import ru.practicum.utils.PaginationUtils;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -41,7 +41,7 @@ public class AdminUserController {
                                   @RequestParam(defaultValue = "0") Integer from,
                                   @RequestParam(defaultValue = "10") Integer size) {
         log.info("Get users ids {}, from {}, size {}", ids, from, size);
-        List<UserDto> result = userMapper.toUserDto(userService.getByIds(ids, PaginationCustom.getPageable(from, size)));
+        List<UserDto> result = userMapper.toUserDto(userService.getByIds(ids, PaginationUtils.getPageable(from, size)));
         log.info("Get success user - size {}", result.size());
         return result;
     }
